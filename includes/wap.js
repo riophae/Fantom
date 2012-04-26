@@ -16,16 +16,22 @@ var	pageNum,
   isMsgForward = is('msg.forward'),
   isSearch = is('q/') || is('search');
 
+var firstPage = fUrl + 'home/p.1';
+
 function noop() { }
 function jumpToLink(url) {
-	if (url == fUrl + 'home/p.1')
+	if (url == firstPage)
 		url = fUrl + 'home';
   window.location.assign(url);
 }
 
+if (thisUrl == firstPage) {
+	jumpToLink(fUrl + 'home');
+}
+
 var jumpTo = sessionStor.last_page;
-if (jumpTo == fUrl + 'home/p.1') {
-  jumpTo = (thisUrl == fUrl + 'home' || thisUrl == fUrl + 'home/p.1') ?
+if (jumpTo == firstPage) {
+  jumpTo = (thisUrl == fUrl + 'home' || thisUrl == firstPage) ?
     '' : fUrl + 'home';
 }
 sessionStor.last_page = '';
@@ -43,7 +49,7 @@ if (isHome && jumpTo && jumpTo != thisUrl) {
   var jumpTo = pref.getItem('last_page');
   pref.last_page = '';
   if (jumpTo && thisUrl == fUrl + 'home' &&
-		jumpTo != fUrl + 'home/p.1' && jumpTo != thisUrl) {
+		jumpTo != firstPage && jumpTo != thisUrl) {
     jumpToLink(jumpTo);
 	}
 })();
@@ -226,6 +232,10 @@ function submitForm(form) {
       storage.removeItem(ta.id);
       var counter = $i('counter');
       counter && (counter.innerHTML = '140');
+
+			if (thisUrl == fUrl + 'home' && pageNum === 1) {
+				window.location.reload();
+			}
       setTimeout(function() {
         ta.placeholder = _ph;
         if (isMsgForward || isMsgReply) {
