@@ -18,6 +18,8 @@ var	pageNum,
 
 function noop() { }
 function jumpToLink(url) {
+	if (url == fUrl + 'home/p.1')
+		url = fUrl + 'home';
   window.location.assign(url);
 }
 
@@ -40,8 +42,10 @@ if (isHome && jumpTo && jumpTo != thisUrl) {
 (function() {
   var jumpTo = pref.getItem('last_page');
   pref.last_page = '';
-  if (jumpTo && thisUrl == fUrl + 'home' && jumpTo != fUrl + '/p.1')
+  if (jumpTo && thisUrl == fUrl + 'home' &&
+		jumpTo != fUrl + 'home/p.1' && jumpTo != thisUrl) {
     jumpToLink(jumpTo);
+	}
 })();
 
 function $tag(t, elem) { return (elem || document).getElementsByTagName(t); }
@@ -454,15 +458,6 @@ function processURL(url) {
   return (url + '').get('after', 'http://www.google.com.hk/gwt/n?u=');
 }
 
-function emulateClick(link, e) {
-	e.preventDefault();
-	var event = document.createEvent('MouseEvents');
-	event.initMouseEvent('click', true, true, e.view,
-		e.detail, e.screenX, e.screenY, e.clientX, e.clientY, e.ctrlKey,
-		e.altKey, e.shiftKey, e.metaKey, e.button, link);
-	link.dispatchEvent(event);
-}
-
 function delegate(filter, type, listener, notSearch) {
   d.addEventListener(type, function(e) {
     var target = e.target;
@@ -507,11 +502,6 @@ delegate(function() {
 		link.target = '_blank';
 		link.href = decodeURIComponent(href);
   }
-	if (! link.processed) {
-		link.processed = true;
-		emulateClick(link, e);
-		return;
-	}
   if (! is(href, '')) return;
 
   if (link.innerHTML === '...') {
