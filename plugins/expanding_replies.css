@@ -1,0 +1,98 @@
+#stream>ol>.buffered+li.reply,
+#stream>ol>.buffered+li.reply+li.reply,
+#stream>ol>.buffered+li.reply+li.reply+li.reply,
+#stream>ol>li.reply .share {
+	display: none;
+}
+#stream>ol>li.reply {
+	min-height: 38px;
+	padding: 6px 50px 6px 52px !important;
+	border-left: 3px solid #e5e5e5;
+	font-size: 12px;
+	margin-left: 30px;
+	width: 365px !important;
+}
+#stream>ol>li.reply.last {
+	border-bottom: 1px solid #e5e5e5;
+}
+#stream>ol>li.reply a.avatar {
+	margin-left: -44px;
+}
+#stream>ol>li.reply a.avatar img {
+	width: 32px;
+	height: 32px;
+}
+#stream>ol>li.reply.more,
+#stream>ol>li.reply.hide,
+#stream>ol>li.reply.waiting,
+#stream>ol>li.reply.notavail { 
+	font-size: 90%;
+	height: 1.8em !important;
+	line-height: 1.8em;
+	margin-left: 81%;
+	margin-top: -1.9em;
+	text-align: center;
+	padding: 0px 4px !important;
+	width: 65px !important;
+	min-height: 0;
+	border-left: 0;
+	border-bottom: 0;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+#stream>ol>li.reply.more,
+#stream>ol>li.reply.hide,
+#stream>ol>li.reply.waiting,
+#stream>ol>li.reply.notavail {
+	background: rgba(0, 0, 0, .05);
+	color: #666;
+	text-shadow: 0 1px 0 white; 
+	cursor: pointer;
+}
+#stream>ol>li.reply.more:hover,
+#stream>ol>li.reply.hide:hover,
+#stream>ol>li.reply.waiting:hover,
+#stream>ol>li.reply.notavail:hover {
+	background: rgba(0, 0, 0, .075);
+}
+#stream>ol>li.reply.more:active,
+#stream>ol>li.reply.hide:active,
+#stream>ol>li.reply.waiting:active,
+#stream>ol>li.reply.notavail:active {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .25) inset;
+}
+#stream>ol>li[type="转发"].reply.more,
+#stream>ol>li[type="转发"].reply.hide,
+#stream>ol>li[type="转发"].reply.waiting,
+#stream>ol>li[type="转发"].reply.notavail {
+	width: 60px !important;
+	padding: 0 4px !important;
+}
+#stream>ol>li[type="回复"].reply.more,
+#stream>ol>li[type="回复"].reply.hide,
+#stream>ol>li[type="回复"].reply.waiting,
+#stream>ol>li[type="回复"].reply.notavail {
+	width: 60px !important;
+	padding: 0 4px !important;
+}
+#stream>ol>li.reply.notavail {
+	text-decoration: line-through;
+	cursor: not-allowed;
+}
+#stream>ol>li.reply.waiting,
+#stream>ol>li.reply.waiting:hover,
+#stream>ol>li.reply.waiting:active {
+	background: url("http://static1.fanfou.com/img/ajax.gif") no-repeat center center !important;
+	cursor: progress;
+}
+#stream>ol>li.reply:not(.waiting):not(.hide) {
+	-o-animation: fadeIn .75s;
+}
+#stream.message li.last-refresh + li.reply {
+	border-bottom: 3px solid #e5e5e5;
+	margin-top: -1.75em;
+}
+.light .stamp .reply a {
+	background: transparent !important;
+	color: #999 !important;
+}

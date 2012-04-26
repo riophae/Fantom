@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>- 选项 -</title>
+	<link rel="stylesheet" href="core/options.css" />
+	<link rel="shortcut icon" href="icons/icon-0.png">
+	<script src="core/common.js"></script>
+	<script src="core/namespaces.js"></script>
+	<script src="core/settings.js"></script>
+	<script src="core/options.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="logo">
+			&nbsp;
+			<span id="subtitle">&nbsp;</span>
+		</div>
+		
+		<div id="navigation">
+			<ul><li>&nbsp;</li></ul>
+		</div>
+		
+		<div id="tabs">
+			<div class="tabs" id="tabs0">
+				<ul>
+					<li>
+						<label><input type="checkbox" fantom_key="enable_button" />显示按钮</label>
+						<span class="comment">快速进入饭否 / 鼠标悬停提示动态信息</span>
+					</li>
+					<li>
+						<label><input type="checkbox" fantom_key="enable_popup" />启用 Popup</label>
+						<span class="comment">如果禁用, 则点击按钮时将自动弹出对应页面</span>
+					</li>
+					<li>
+						<label><input type="checkbox" fantom_key="check_fo" />检查新关注者数量及名单</label>
+					</li>
+					<li>
+						<label><input type="checkbox" fantom_key="play_snd" />有提醒时播放提示音</label>
+					</li>
+					<li>
+						<label><input type="checkbox" fantom_key="web_helper" />默认显示 "分享" 图标 / 通知</label>
+						<span class="comment">双击顶部区域可随时开启/关闭</span>
+					</li>
+					<li>
+						<label><input type="checkbox" fantom_key="dis_motto" />显示名言警句</label>
+					</li>
+					<li foldable="foldable">
+						<label><input type="checkbox" name="notify" foldable_src="foldable_src" />在网页端通知最新动态</label>
+						<p id="notify_options" foldable_tgt="foldable_tgt">
+							<label class="sublabel"><input type="checkbox" fantom_key="notify_status" />最新消息</label>
+							<label><input type="checkbox" fantom_key="notify_mentions" />新@</label>
+							<label><input type="checkbox" fantom_key="notify_pm" />新私信</label>
+							<label><input type="checkbox" fantom_key="notify_fo" />新关注者</label>
+						</p>
+						<script>
+							var notify_switch = $one('input[name="notify"]');
+							var notify_opts_list = $i('notify_options');
+							var notify_opts = $('[type="checkbox"]', notify_opts_list);
+							function switch_fn(e) {
+								for (var i = 0; i < notify_opts.length; i++) 
+									setValue(notify_opts[i], getValue(notify_switch));
+							}
+							function opts_fn(e) {
+								setValue(notify_switch, !! $(':checked', notify_opts_list).length)
+							}
+							window.addEventListener('load', function(e) {
+								notify_switch.addEventListener('click', switch_fn, false);
+								opts_fn(e);
+								notify_opts_list.addEventListener('change', opts_fn, false);
+							}, false);
+						</script>
+					</li>
+				</ul>
+				<div class="clear"></div>
+				<div class="footer">
+					 &copy; 2011 <a href="http://fanfou.com/ruif" target="_blank">Swding</a>. All rights reserved.<br />
+					<a href="http://is.gd/fantom" target="_blank">提交使用反馈</a> | <a href="http://fanfou.com/sharer?u=http%3A%2F%2Fis.gd%2Ffantom&t=Fantom%20-%20%E7%94%A8%E4%BA%8E%20Opera%20%E7%9A%84%E9%A5%AD%E5%90%A6%E6%89%A9%E5%B1%95&d=Hey!%20%E4%BD%A0%E4%B9%9F%E5%9C%A8%E7%94%A8%20Opera%3F%20%E4%B8%BA%E4%BD%95%E4%B8%8D%E8%AF%95%E8%AF%95%E9%A5%AD%E5%85%9C%3F%20%3B)&s=bm" target="_blank">推荐饭兜</a>
+				</div>
+			</div>
+		
+			<div class="tabs" id="tabs1">
+				<ul class="spacefanfou">
+					<li>
+						<label><input type="checkbox" sf_key="spacefanfou" />启用太空饭否</label>
+						<span class="comment">全面美化饭否界面, 提供更好的体验</span>
+					</li>
+					<li>
+						<label><a class="screenshot" rel="screenshots/02_02_01.png" title="半透明的界面样式预览"><input type="checkbox" sf_key="translucent_interface" />启用半透明的界面</a></label>
+					</li>
+					<li>
+						<label><a class="screenshot" rel="screenshots/02_03_01.png" title="窗体下显示阴影样式预览"><input type="checkbox" sf_key="box_shadows" />在导航栏、主窗体等元素下显示阴影</a></label>
+					</li>
+					<li>
+						<label><a class="screenshot" rel="http://static2.fanfou.com/img/fanfou.png" title="经典版饭否 logo"><input type="checkbox" sf_key="logo_remove_beta" />启用经典版饭否 logo</a></label>
+						<span class="comment">去除 logo 的 "测试版" 字样</span>
+					</li>
+					<li>
+						<label><input type="checkbox" sf_key="remove_app_recom" />屏蔽 "随机应用推荐" 及 "饭否应用" 广告区</label>
+					</li>
+					<li foldable="foldable">
+						<label><a class="screenshot" rel="screenshots/01_01_01.png" title="展开回复功能预览"><input type="checkbox" sf_key="expanding_replies" foldable_src="foldable_src" />启用展开回复和转发</a></label>
+						<p foldable_tgt="foldable_tgt">
+							<label class="sublabel">每次展开数量: <input type="number" min="1" max="20" step="1" sf_key="expanding_replies.number" /></label>
+						</p>
+						<p foldable_tgt="foldable_tgt">
+							<label class="sublabel"><input type="checkbox" sf_key="expanding_replies.auto_expand" />载入页面时自动展开一条消息上文</label>
+						</p>
+					</li>
+					<li foldable="foldable">
+						<label><a class="screenshot" rel="screenshots/01_04_01.png" title="浮动输入框功能预览"><input type="checkbox" sf_key="float_message" foldable_src="foldable_src" />启用浮动输入框</a></label>
+						<span class="comment">使用跟随页面滚动的浮动输入框</span>
+						<p foldable_tgt="foldable_tgt">
+							<label class="sublabel"><input type="checkbox" sf_key="float_message.noajaxattop" />当输入框不浮动时，发布消息后刷新页面</label>
+						</p>
+						<p foldable_tgt="foldable_tgt">
+							<label class="sublabel"><input type="checkbox" sf_key="float_message.notlostfocus" />启用连发模式</label>
+							<span class="comment">消息发出后焦点保留在输入框</span>
+						</p>
+						<p foldable_tgt="foldable_tgt">
+							<label class="sublabel"><input type="checkbox" sf_key="float_message.keepmentions" />启用快速@模式</label>
+							<span class="comment">消息发出后输入框中保留所@的人</span>
+						</p>
+					</li>
+					<li>
+						<label><a class="screenshot" rel="screenshots/01_03_01.png" title="多用户切换功能预览"><input type="checkbox" sf_key="user_switcher" />启用多用户切换</a></label>
+					</li>
+					<li>
+						<label><input type="checkbox" sf_key="disable_autocomplete" />禁用输入@时的自动补全</label>
+					</li>
+					<li>
+						<label><input type="checkbox" sf_key="friend_manage" />启用关注批量管理</label>
+					</li>
+					<li>
+						<label><input type="checkbox" sf_key="privatemsg_manage" />启用私信批量管理</label>
+					</li>
+					<li>
+						<label><a class="screenshot" rel="screenshots/01_09_01.png" title="增强的侧栏功能预览"><input type="checkbox" sf_key="advanced_sidebar" />启用侧栏详细统计信息</a></label>
+						<span class="comment">在用户空间侧栏显示详细统计信息</span>
+					</li>
+          <li>
+            <label><a class="screenshot" rel="screenshots/01_10_01.png" title="可选切换默认模版功能预览"><input type="checkbox" sf_key="clean_personal_theme" />启用可选切换默认模版</a></label>
+            <span class="comment">允许临时清除 / 恢复用户自定义模板</span>
+          </li>
+          <li>
+            <label><input type="checkbox" sf_key="auto_pager" />自动翻页</label>
+            <span class="comment">快捷键 A: 临时开启/关闭自动翻页 T: 回到顶部</span>
+          </li>
+				</ul>
+				<div class="clear"></div>
+				<div class="footer">
+					 &copy; 2011 <a href="http://fanfou.com/anegie" target="_blank">Kevin</a>, <a href="http://fanfou.com/xidorn" target="_blank">Xidorn</a> (Upsuper). All rights reserved.<br />
+					<a href="http://fanfou.com/spacefanfou" target="_blank">官方帐号</a> | <a href="https://github.com/anegie/Space-Fanfou" target="_blank">开源项目地址</a> | <a href="http://fanfou.com/home?status=@%E5%A4%AA%E7%A9%BA%E9%A5%AD%E5%90%A6+" target="_blank">提交使用反馈</a> | <a href="http://fanfou.com/sharer?u=http%3A%2F%2Fis.gd%2Fspacefanfou?t=%E5%A4%AA%E7%A9%BA%E9%A5%AD%E5%90%A6%20-%20Chrome%20%E7%BD%91%E4%B8%8A%E5%BA%94%E7%94%A8%E5%BA%97?d=%E5%90%91%E5%A4%A7%E5%AE%B6%E6%8E%A8%E8%8D%90%E5%A4%AA%E7%A9%BA%E9%A5%AD%E5%90%A6%EF%BC%8C%E8%B6%85%E5%BC%BA%E5%A4%A7%E7%9A%84%E9%A5%AD%E5%90%A6%20Chrome%20%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F%E3%80%82?s=bl" target="_blank">推荐太空饭否</a>
+				</div>
+			</div>
+			
+			<div class="tabs" id="tabs2">
+				<p><strong>使用技巧 & 小知识:</strong></p>
+				<ol>
+					<li>Fantom 目前没有使用任何 API.</li>
+					<li>建议安装 <a href="http://code.google.com/p/fontpro/downloads/detail?name=HiraginoSansGB.7z">Hiragino Sans GB</a>、<a href="http://www.7xdown.com/downinfo/5113.html">微软雅黑</a> 字体并开启 <a href="http://www.crsky.com/soft/6425.html">ClearType</a> 以获得最佳显示效果.</li>
+					<li>不论是否启用了 <strong>"默认显示 "分享" 图标 / 通知"</strong> 选项, 您都可以随时通过双击页面顶部区域来临时开启或关闭这一功能. Fantom 为每个域名设计了开关, 可以记住您的操作.</li>
+					<li>Fantom 启用 Popup 后, 点击按钮即可显示经过美化增强的 Wap 版饭否界面. 其中凡是有输入框的地方, 都可以使用 Ctrl + Enter 快捷键来提交表单.</li>
+					<li>名言警句来自 <a href="http://www.verycd.com" target="_blank">VeryCD.com</a>.</li>
+				</ol>
+			</div>
+
+			<div class="tabs" id="tabs3">
+				<p><strong>太空饭否</strong> 是由 @<a href="http://fanfou.com/anegie" target="_blank">Kevin</a> 和 @<a href="http://fanfou.com/xidorn" target="_blank">Xidorn</a> (Upsuper) 合作开发的饭否辅助脚本. 可以给饭否页面添加回复展开、多用户切换等功能, 并且使饭否页面的变得更美更舒心, 符合您的使用习惯.<br /><i>(目前仅引入了 CSS 部分)</i></p>
+				<p>&nbsp;</p>
+				<p><strong>饭兜</strong> 是由 @<a href="http://fanfou.com/ruif" target="_blank">锐风</a> 开发的用于 Opera 的饭否扩展. 它能够帮助你定时检查饭否的最新动态, 包括 Timeline 的最后一条消息、新@、新私信、新关注者. 同时允许你方便地通过 Wap 版客户端、显示在网页边缘的图标随时分享心情. </p>
+				<p>&nbsp;</p>
+				<p><strong>第一次启动可能出现无法正常登录的问题. 重启 Opera 后将恢复正常. </strong>建议使用 Opera 11.60+ 以获得最佳体验.</p>
+				<p>完整更新列表请参见<a href="http://is.gd/fantom" target="_blank">这里</a>.</p>
+        <button id="low_consume_mode">低资源消耗模式</button>
+        <script>
+          $i('low_consume_mode').addEventListener('click', function(e) {
+            var self = this;
+            self.className = 'clicked';
+            setTimeout(function() {
+             self.className = '';
+            }, 750);
+            
+            var items = {
+              sf: [ 'spacefanfou', 'translucent_interface', 'box_shadows', 'expanding_replies.auto_expand', 'user_switcher', 'privatemsg_manage', 'clean_personal_theme', 'auto_pager' ],
+              fantom: [ 'web_helper', 'dis_motto' ]
+            };
+            for (var name in items) {
+              if (! items.hasOwnProperty(name)) continue;
+              items[name].forEach(function(item) {
+                setValue($one('[' + name + '_key="' + item + '"]'), false);
+              });
+            }
+            setValue($one('[sf_key="disable_autocomplete"]'), true);
+          });
+        </script>
+			</div>
+		</div>
+ 
+	</div>
+	
+	<script>
+		var tab_details = [
+			{
+				icon: 'fantom',
+				title: '饭兜',
+				subtitle: widget.version
+			},
+			{
+				icon: 'sf',
+				title: '太空饭否',
+				subtitle: SF.version
+			},
+			{
+				icon: 'tips',
+				title: '使用技巧',
+			},
+			{
+				icon: 'about',
+				title: '关于',
+			}
+		];
+
+		var $nav = [];
+    tab_details.forEach(function(detail, n) {
+ 			$nav.push('<li>');
+      $nav.push('<a id="tab' + n + '" onclick="current(' + n + ', this)" href="javascript:void(0)">');
+      $nav.push(detail.title + '</a></li>');
+    });
+		$i('navigation').innerHTML = '<ul>' + $nav.join('\n') + '</ul>';
+
+		function current(tab_no, selfObj) {
+			storage.setItem('last_used_tab', 'tab' + tab_no);
+
+			var tabs = $i('navigation').getElementsByTagName('li');
+			for (var i = 0, len = tabs.length; i < len; i++)
+				removeClass(tabs[i], 'current');
+			addClass(selfObj.parentNode, 'current');
+
+			for (var i = 0, j; j = $i('tabs' + i); i++)
+				addClass(j, 'hide');
+       
+      var current_tab = $i('tabs' + tab_no);
+			removeClass(current_tab, 'hide');
+      current_tab.focus();
+
+			var detail = tab_details[tab_no];
+			var $logo = $i('logo');
+			$logo.className = detail.icon;
+			$logo.childNodes[0].textContent = detail.title;
+			$i('subtitle').innerHTML = detail.subtitle || '';
+
+			if (! detail.subtitle)
+				addClass($logo, 'middle');
+		}
+
+		var last_used_tab = storage.getItem('last_used_tab') || 'tab3';
+		$i(last_used_tab).click();
+
+		// 禁止选中选项内容
+		$i('wrapper').addEventListener('mousedown', function(e) {
+      if (! e.target.type)
+        e.preventDefault();
+    });
+	</script>
+</body>
+</html>

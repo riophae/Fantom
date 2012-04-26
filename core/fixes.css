@@ -1,0 +1,113 @@
+/* Global */
+* {
+	font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif !important;
+}
+
+h1, h2, h3 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", Helvetica, Arial, Tahoma, sans-serif !important;
+}
+
+/* Screen */
+.formbutton {
+	white-space: nowrap;
+}
+#panel h1 {
+	font-weight: 300 !important;
+}
+#stream.message li a.author {
+  float: none !important;
+}
+#systip {
+	border-radius: 5px;
+}
+
+/* Simplified */
+@media (max-width: 775px) {
+	#container {
+		width: 540px;
+	}
+	#sidebar {
+		display: none;
+	}
+	#navigation ul>li:nth-child(4),
+	#navigation ul>li:nth-child(7) {
+		display: none;
+	}
+	#main {
+		border-radius: 10px !important;
+	}
+	#footer .ui-roundedbox-content {
+		width: 525px;
+		color: transparent;
+	}
+	#footer a:nth-of-type(2),
+	#footer a:nth-of-type(4),
+	#footer a:nth-of-type(8),
+	#footer #miibeian {
+		display: none;
+	}
+	#footer a:nth-of-type(1),
+	#footer a:nth-of-type(3),
+	#footer a:nth-of-type(7) {
+		margin-right: -1ex;
+	}
+	/*#pagination-totop {
+		margin-left: 527px !important;
+	}*/
+}
+
+/* Fixes for Opera */
+.sysmsg {
+  border-radius: 0 0 5px 0;
+}
+.newfeature::after {
+	content: "" !important;
+}
+a, 
+a img, 
+#user_top img {
+	border-radius: 2px;
+}
+.more-left {
+	border-radius: 5px 0 0 5px !important;
+}
+.more-right {
+	border-radius: 0 5px 5px 0 !important;
+}
+#columns {
+	border-collapse: separate !important;
+}
+#main {
+	border-radius: 10px 0 0 10px;
+}
+#sidebar {
+	border-radius: 0 10px 10px 0;
+}
+#searchr-input {
+	border-radius: 5px 0 0 5px;
+}
+#searchr-submit {
+	border-radius: 0 5px 5px 0;
+}
+#searchpanel, 
+.pagination .more, 
+p.trends, 
+#advancedsearch, 
+#goodapp {
+	border-radius: 5px;
+}
+#search-switch, 
+#search-switch .current {
+	border-radius: 5px 5px 0 0;
+}
+#searchpanel .act {
+	border-radius: 0 0 5px 5px;
+}
+#help .codelet {
+	border-radius: 8px;
+}
+#finder_tabbar a, 
+#finder_tabbar a:active, 
+.stabs ul li a {
+	border-radius: 0;
+}

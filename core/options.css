@@ -1,0 +1,318 @@
+/* Global Reset */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+pre, code, kbd, samp {
+	font-family: monospace, sans-serif;
+}
+strong {
+	font-weight: bold;
+}
+i {
+	font-style: italic;
+}
+ins {
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
+}
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
+}
+del {
+	text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+ul, ul li {
+	list-style: none;
+}
+ol, ol li {
+	list-style-type: decimal;
+}
+ol li {
+	margin-left: 20px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+input, textarea, select {
+	color: inherit;
+	font: inherit;
+	outline: none;
+	vertical-align: middle;
+}
+
+/* Private */
+body {
+	color: #555;
+	font: 400 12px/1.5 "\5FAE\8F6F\96C5\9ED1", "Hiragino Sans GB", "Wenquanyi MicroHei", "Lucida Grande", "Hevetica Neue", Hevetica, Calibri, Tahoma, sans-serif;
+	background: #fff;
+}
+::selection {
+	color: rgba(255, 255, 255, .75);
+	background: rgba(0, 0, 0, .5);
+	text-shadow: none;
+}
+.hide {
+	display: none !important;
+}
+.tabs {
+	display: block;
+}
+a {
+	color: #06c;
+	text-decoration: underline;
+}
+a:hover, a:active {
+	outline: none;
+}
+em {
+	font-style: italic;
+}
+h1 {
+	font-size: 20px;
+	padding: 5px 8px;
+	background: #ebf0f5;
+	border-radius: 5px;
+}
+h2 {
+	font-family: "Helvetica Neue", Helvetica, Calibri, Tahoma, sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 1em;
+	margin-bottom: 3px;
+}
+h3 {
+	font-size: 12px;
+}
+h4 {
+	font-size: 12px;
+}
+.left {
+	float: left;
+}
+.clear {
+	clear: both;
+}
+
+/* Screen */
+#wrapper {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 380px;
+	max-width: 380px;
+	height: 400px;
+	margin: -200px 0 0 -190px;
+	padding: 10px;
+}
+#logo {
+	height: 48px;
+	padding: .3em .3em .3em 3em;
+	font-size: 20px;
+	text-shadow: 0 1px 0 white;
+	border-radius: 5px;
+}
+#logo.middle {
+	line-height: 48px;
+}
+.fantom {
+	background: #ebf0f5 url('/icons/icon-fantom-48.png') .3em center no-repeat;
+}
+.sf {
+	background: #ebf0f5 url('/icons/icon-spacefanfou-48.png') .3em center no-repeat;
+}
+.tips {
+	background: #ebf0f5 url('/icons/icon-tips-48.png') .3em center no-repeat;
+}
+.about {
+	background: #ebf0f5 url('/icons/icon-about-48.png') .3em center no-repeat;
+}
+#subtitle {
+	display: block;
+	font-size: 14px;
+	color: #999;
+	line-height: 14px;
+}
+#navigation {
+	border-bottom: 1px solid rgba(0, 0, 0, .15);
+	position: relative;
+	margin: 10px 0;
+}
+#navigation ul {
+	position: relative;
+	margin-bottom: -1px;
+	font-size: 14px;
+}
+#navigation ul li {
+	display: inline;
+}
+#navigation ul li a {
+	display: inline-block;
+	height: 21px;
+	margin: 5px 0 0;
+	padding: 3px 11px;
+	text-decoration: none;
+	line-height: 21px;
+	vertical-align: bottom;
+	border: 1px solid rgba(0, 0, 0, .12);
+	border-bottom-color: rgba(0, 0, 0, .15);
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	color: #666;
+	background: -o-linear-gradient(top, #fff 0%, #eee 100%);
+	text-shadow: 0 1px 0 white;
+}
+#navigation ul li.current a {
+	background: none;
+	border-bottom-color: rgba(255, 255, 255, 1);
+	padding: 5px 11px;
+	border-bottom: 1px solid white;
+	margin: 0;
+}
+#tip {
+	margin-top: 10px;
+	padding: 5px 8px;
+	background: #ebf3f5;
+	border-radius: 5px;
+}
+.info {
+	width: 322px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+.info p {
+	color: #999;
+}
+#tabs {
+}
+#tabs ul {
+	height: 240px;
+	overflow-y: auto;
+}
+#tabs0 li, #tabs1 li {
+	border-bottom: 1px solid rgba(0, 0, 0, .12);
+	padding: 3px 0;
+}
+#tabs0 li label:hover, #tabs1 li label:hover {
+	cursor: pointer;
+	color: #06c;
+	background: #eee;
+}
+#tabs0 li label a, #tabs1 li label a {
+	color: inherit;
+	text-decoration: none;
+}
+#tabs2 {
+	margin-top: 15px;
+}
+input[sf_key="expanding_replies.number"] {
+	width: 35px;
+	color: #555 !important;
+}
+button {
+  text-align: center;
+	line-height: 22px;
+	height: 22px;
+  width: 120px;
+  color: #555;
+	background: -o-linear-gradient(bottom, #ebebeb 0%, #ececec 50%, #f3f3f3 50%, #fff 100%);
+  text-shadow: 0px 1px 0 rgba(255, 255, 255, .25);
+	border: 1px solid #9a9a9a;
+	border-radius: 3px;
+	box-shadow:
+		0 1px 0 rgba(255, 255, 255, .75) inset,
+		0 1px 0 rgba(0, 0, 0, .09);
+}
+button:hover {
+	box-shadow:
+		0 999px 0 rgba(172, 172, 172, .05) inset,
+		0 1px 0 rgba(255, 255, 255, 1) inset,
+		0 1px 0 rgba(0, 0, 0, .09);
+}
+button:active {
+	background: -o-linear-gradient(top, #e8e8e8 0%, #f2f2f2 100%);
+	box-shadow:
+		0 0 2px rgba(255, 255, 255, .75) inset,
+		0 1px 0 rgba(0, 0, 0, .09);
+}
+button.clicked {
+  content: "\5df2\542f\52a8";
+  color: green;
+	border-color: rgba(83, 186, 237, 1);
+	box-shadow: 0 0 8px rgba(83, 186, 237, .6);
+}
+.comment {
+	color: #999;
+	margin-left: 5px;
+}
+.comment::before {
+	content: "- ";
+}
+.sublabel {
+	margin-left: 18px;
+}
+[foldable_tgt] {
+  -o-transition: height .2s linear;
+  transition: height .2s linear;
+  overflow: hidden;
+  height: 24px;
+}
+[foldable].folded [foldable_tgt] {
+  height: 0;
+}
+#screenshot {
+	position: absolute;
+	background: rgba(241, 241, 241, .9);
+	padding: 10px 10px 5px;
+	border: 1px solid;
+	border-top-color: rgba(0, 0, 0, .25);
+	border-left-color: rgba(0, 0, 0, .4);
+	border-right-color: rgba(0, 0, 0, .4);
+	border-bottom-color: rgba(0, 0, 0, .6);
+	border-radius: 5px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+  -o-transition: opacity .2s ease-in;
+  transition: opacity .2s ease-in;
+	color: #333;
+	text-shadow: 0 1px 0 white;
+}
+#screenshot.fadeOut {
+  opacity: 0;
+}
+#screenshot img {
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 3px;
+}
+.footer {
+	padding-top: 10px;
+}
+.footer a {
+	color: #999;
+}

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="https://addons.opera.com/extensions/details/fantom/" version="1.5.6">
+  <name>Fantom</name>
+  <icon src="icons/icon-fantom-64.png"/>
+  <access origin="http://fanfou.com" subdomains="true"/>
+  <feature name="opera:share-cookies" required="true"/>
+  <update-description href="https://extension-updates.opera.com/api/w3c-wd1/update/86e9291b-5146-4104-8461-6bcd62454408/"/>
+  <author href="http://fanfou.com/ruif" email="iruif.cn@gmail.com">swding</author>
+  <license>Copyright 2012 swding. All rights reserved.</license>
+  <description xml:lang="zh">饭兜是一款用于 Opera 的小巧智能的饭否扩展. 想要第一时间知道谁@了你? 想要随时随地的分享? 想要更好的用户体验? 来试试我们的歌剧魅影 (The Phantom of The Opera) 吧~ 太空饭否现已强力加入!</description>
+</widget>
