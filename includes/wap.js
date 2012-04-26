@@ -310,9 +310,9 @@ function showStatus(status_add) {
       for (var i = 0; key = keywords[i]; i++) {
         if (source.test(key + status_id)) count++;
       }
-      
+
       if (source.test('="/photo.del/')) count++;
-      
+
       if (count >= 2) {
         var s =
           source.get('after', '"><img src="http://static.fanfou.com/i/fanfou.gif" alt="饭否" /></a></h1>')
@@ -454,11 +454,20 @@ function processURL(url) {
   return (url + '').get('after', 'http://www.google.com.hk/gwt/n?u=');
 }
 
+function emulateClick(link, e) {
+	e.preventDefault();
+	var event = document.createEvent('MouseEvents');
+	event.initMouseEvent('click', true, true, e.view,
+		e.detail, e.screenX, e.screenY, e.clientX, e.clientY, e.ctrlKey,
+		e.altKey, e.shiftKey, e.metaKey, e.button, link);
+	link.dispatchEvent(event);
+}
+
 function delegate(filter, type, listener, notSearch) {
   d.addEventListener(type, function(e) {
     var target = e.target;
     do {
-      if (filter.call(target, e) === true) {
+      if (! e.cancelBubble && filter.call(target, e) === true) {
         if (listener.call(target, e) === false)
           e.preventDefault();
         return;
@@ -478,25 +487,34 @@ delegate(function(e) {
   }
 });
 
+var noCacheRE = /\?v=\d+/;
 delegate(function() {
-  return isLink(this) && (/\?v=\d+/.test(this.href));
+  return isLink(this) && noCacheRE.test(this.href);
 }, 'click', function(e) {
   pref.last_page = sessionStor.last_page = '';
-  jumpToLink(this.href.replace(/\?v=\d+/, ''));
-  return false;
+  jumpToLink(this.href.replace(noCacheRE, ''));
+  e.preventDefault();
+	e.stopPropagation();
 });
 
 delegate(function() {
   return isLink(this);
-}, 'click', function() {
-  var href = is(this.href, 'q/') ? this.href : processURL(this.href);
-  if (href && href != this.href) {
-    createTab(decodeURIComponent(href));
-    return false;
+}, 'click', function(e) {
+	var link = this;
+  var href = is(link.href, 'q/') ? link.href : processURL(link.href);
+  if (href && (href != link.href)) {
+    link.gwtLink = href;
+		link.target = '_blank';
+		link.href = decodeURIComponent(href);
   }
+	if (! link.processed) {
+		link.processed = true;
+		emulateClick(link, e);
+		return;
+	}
   if (! is(href, '')) return;
 
-  if (this.innerHTML === '...') {
+  if (link.innerHTML === '...') {
     return false;
   }
 
@@ -539,6 +557,19 @@ delegate(function() {
     showPhoto(this);
     return false;
   }
+});
+
+d.addEventListener('contextmenu', function(e) {
+  if (! isLink(e.target)) return;
+	var link = e.target;
+	if (link.processed) return;
+	link.processed = true;
+
+	var href = link.gwtLink || processURL(link.href);
+	if (href != link.href) {
+		link.gwtLink = href;
+		link.href = decodeURIComponent(href);
+	}
 });
 
 d.addEventListener('submit', function(e) {
@@ -785,7 +816,7 @@ setTimeout(function() {
   if (isHome || isMentions) {
     showMotto(ta);
   }
-	
+
 	if (ta && isMsgForward) {
 		ta.setSelectionRange(0, 0);
 	}
