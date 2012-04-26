@@ -23,7 +23,7 @@ var SF = (function() {
     pl: { },
     cb: { },
     st: { },
-    version: '0.6.3.7',
+    version: '0.6.4.0',
     plugin: function(func) {
       if (! func) func = { };
       this.loaded = false;
