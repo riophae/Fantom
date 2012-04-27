@@ -210,7 +210,7 @@ function submitForm(form) {
     return form.submit();
   }
 
-  if (! (ta && ta.value && ta.value.length < 141))
+  if (! (ta && ta.value))
     return;
 
   if (form.className.test('onerror'))
@@ -504,6 +504,18 @@ delegate(function() {
 
 delegate(function() {
   return isLink(this);
+}, 'mousedown', function(e) {
+	var link = this;
+  var href = is(link.href, 'q/') ? link.href : processURL(link.href);
+  if (href && (href != link.href)) {
+    link.gwtLink = href;
+		link.target = '_blank';
+		link.href = decodeURIComponent(href);
+  }
+});
+
+delegate(function() {
+  return isLink(this);
 }, 'click', function(e) {
 	var link = this;
   var href = is(link.href, 'q/') ? link.href : processURL(link.href);
@@ -560,6 +572,7 @@ delegate(function() {
 });
 
 d.addEventListener('contextmenu', function(e) {
+	return;
   if (! isLink(e.target)) return;
 	var link = e.target;
 	if (link.processed) return;
