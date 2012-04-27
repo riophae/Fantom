@@ -506,7 +506,7 @@ delegate(function() {
   return isLink(this);
 }, 'mousedown', function(e) {
 	var link = this;
-  var href = is(link.href, 'q/') ? link.href : processURL(link.href);
+  var href = processURL(link.href);
   if (href && (href != link.href)) {
     link.gwtLink = href;
 		link.target = '_blank';
@@ -518,12 +518,7 @@ delegate(function() {
   return isLink(this);
 }, 'click', function(e) {
 	var link = this;
-  var href = is(link.href, 'q/') ? link.href : processURL(link.href);
-  if (href && (href != link.href)) {
-    link.gwtLink = href;
-		link.target = '_blank';
-		link.href = decodeURIComponent(href);
-  }
+  var href = processURL(link.href);
   if (! is(href, '')) return;
 
   if (link.innerHTML === '...') {
@@ -569,20 +564,6 @@ delegate(function() {
     showPhoto(this);
     return false;
   }
-});
-
-d.addEventListener('contextmenu', function(e) {
-	return;
-  if (! isLink(e.target)) return;
-	var link = e.target;
-	if (link.processed) return;
-	link.processed = true;
-
-	var href = link.gwtLink || processURL(link.href);
-	if (href != link.href) {
-		link.gwtLink = href;
-		link.href = decodeURIComponent(href);
-	}
 });
 
 d.addEventListener('submit', function(e) {

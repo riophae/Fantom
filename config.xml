@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="https://addons.opera.com/extensions/details/fantom/" version="1.5.7">
+<widget xmlns="http://www.w3.org/ns/widgets" id="https://addons.opera.com/extensions/details/fantom/" version="1.5.8">
   <name>Fantom</name>
   <icon src="icons/icon-fantom-64.png"/>
   <access origin="http://fanfou.com" subdomains="true"/>
