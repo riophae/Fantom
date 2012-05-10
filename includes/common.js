@@ -8,7 +8,7 @@ var pref = widget.preferences,
   domain = document.domain,
   storage = window.localStorage,
   oe = opera.extension;
-  
+
 (function() {
   var opera_ver = pref.getItem('OPERA_VERSION_OUTDATED');
   if (! opera_ver) return;
@@ -34,11 +34,9 @@ function $one(rule, elem) { return (elem || document).querySelector(rule); }
 $c('fantom');
 
 function $Elem(func, lazy) {
-
   this.cacheElem = func;
   this.lazyReset = lazy;
   lazy || this.reset();
-
 }
 
 $Elem.prototype = (function(undefined) {
@@ -219,6 +217,7 @@ function insertExternalScript(script_url, type) {
   docelem.appendChild($script);
 }
 
+var _insert = {};
 function insertCode(tagName, name, type, code) {
   type = type || 'sf'; // type 的可能值: 'sf', 'fantom'
 
@@ -260,7 +259,19 @@ function insertCode(tagName, name, type, code) {
   $code.appendChild($t(code));
   $code.id = id;
   $code.className = type == 'sf' ? 'space-fanfou' : 'fantom';
-  docelem.appendChild($code);
+
+	_insert.fragment = _insert.fragment || document.createDocumentFragment();
+	_insert.fragment.appendChild($code);
+	clearTimeout(_insert.timeout);
+	_insert.timeout = setTimeout(_insert.apply, 10);
+}
+
+_insert.timeout = null;
+_insert.fragment = null;
+_insert.apply = function() {
+	if (! _insert.fragment) return;
+	docelem.appendChild(_insert.fragment);
+	delete _insert.fragment;
 }
 
 function insertStyle() {
@@ -290,7 +301,7 @@ function fantom_switch(value) {
 var waitFor = (function() {
   var waiting_list = [];
   var interval, lock;
-  
+
   function setWaiting(task) {
     if (task) waiting_list[waiting_list.length] = task;
     if (interval) return;

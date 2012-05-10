@@ -414,7 +414,7 @@ function processFollower(link) {
   link.innerHTML = '...';
   getForm(link.href, {
     onsuccess: function() {
-      link.innerHTML = '成功';
+      link.innerHTML = '提交成功';
       var item = link.parentNode.parentNode;
       if (tagName(item) === 'li') {
         slideUp(item);
