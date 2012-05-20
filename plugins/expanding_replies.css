@@ -89,8 +89,8 @@
 	-o-animation: fadeIn .75s;
 }
 #stream.message li.last-refresh + li.reply {
-	border-bottom: 3px solid #e5e5e5;
-	margin-top: -1.75em;
+	/*border-bottom: 3px solid #e5e5e5;
+	margin-top: -1.75em;*/
 }
 .light .stamp .reply a {
 	background: transparent !important;
