@@ -11,9 +11,6 @@ function recache() {
 
 var cache = {
   debug: function(fName) {
-    /*setInterval(function() {
-      oe.postMessage({ act: 'recache_files', fName: fName });
-    }, 500);*/
     setInterval(recache, 1500);
   },
   clear: function(filter) { // 清空缓存
@@ -185,7 +182,7 @@ function initialize() {
     var data = storage.getObj('SPACEFANFOU_PAGECACHE');
     if (! data) return oe.postMessage({ act: 'recache_data' });
     
-    var required_files = [ 'fixes.css', 'namespaces.js', 'sf_probe.js', 'spacefanfou.css', 'sf_functions.js' ];
+    var required_files = ['fixes.css', 'namespaces.js', 'sf_probe.js', 'spacefanfou.css', 'sf_functions.js'];
     for (var i = 0; i < required_files.length; i++) {
       if (! storage.getItem(required_files[i]))
         return oe.postMessage({ act: 'recache_files' });
